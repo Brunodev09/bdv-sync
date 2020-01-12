@@ -5,12 +5,13 @@ export default class WebSocket {
     io: socketIo.Server;
     constructor(socket: socketIo.Server) {
         this.io = socket;
+
         _.say("Websocket is listening...");
 
         this.io.on('connection', (socket: any) => {
             _.say('a user connected');
 
-            socket.on('chat message', function (msg) {
+            socket.on('chat message', (msg) => {
                 _.say('message: ' + msg);
             });
 

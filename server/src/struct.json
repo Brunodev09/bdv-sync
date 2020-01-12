@@ -1,0 +1,18 @@
+{
+    "storages": [
+        {
+            "storageName": "myStorage",
+            "channel": "1",
+            "fileManager": {
+                
+            }
+        },
+        {
+            "storageName": "myStorage2",
+            "channel": "2",
+            "fileManager": {
+
+            }
+        }
+    ]
+}

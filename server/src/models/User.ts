@@ -14,6 +14,10 @@ const User = new Schema({
         type: String,
         required: true,
     },
+    folderTreeAssociation: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true
 });
