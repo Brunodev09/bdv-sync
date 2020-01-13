@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./dist/core/index.js"
+    "compile": "tsc && node ./dist/network/index.js"
   },
   "author": "brunodev09",
   "license": "MIT",

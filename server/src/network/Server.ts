@@ -35,6 +35,7 @@ export default class StartServer {
     public listen() {
         this.app.listen(process.env.PORT || 5000);
         this.socketListeners = new WebSocket(this.io);
+        this.socketListeners.listen();
     }
 
     private initMiddlewares() {
