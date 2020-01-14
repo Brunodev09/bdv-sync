@@ -14,6 +14,10 @@ const Channel = new Schema({
         type: Number,
         required: true
     },
+    dump: {
+        type: String,
+        required: true
+    },
     lastUpdated: {
         type: Date,
         required: true,

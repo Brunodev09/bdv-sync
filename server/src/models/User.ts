@@ -13,17 +13,7 @@ const User = new Schema({
     password: {
         type: String,
         required: true,
-    },
-    channelsFolderStructs: [{
-        channelId: {
-            type: Schema.Types.ObjectId,
-            required: true
-        },
-        structure: {
-            type: String,
-            required: true
-        }
-    }],
+    }
 }, {
     timestamps: true
 });

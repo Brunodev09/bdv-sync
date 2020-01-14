@@ -44,10 +44,9 @@ export default class WebSocket {
             socket.emit("synchronize");
 
             socket.on('synchronize', async (packet) => {
-                await Sync.updateUserChannels(packet.email);
+                await Sync.updateUserChannels(packet.email, packet.dumpJSON);
                 await this.sleep(500);
                 socket.emit("synchronize");
-                _.say('message: ' + packet);
             });
 
             socket.on('disconnect', () => {

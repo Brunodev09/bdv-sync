@@ -4,15 +4,34 @@
             "storageName": "myStorage",
             "channel": "1",
             "struct": {
-                
+                "name": "myCustomFolder",
+                "type": "folder",
+                "content": [
+                    {
+                        "name": "myFile",
+                        "type": "file",
+                        "size": 1
+                    },
+                    {
+                        "name": "myCustomFolder2",
+                        "type": "folder",
+                        "content": [
+                            {
+                                "name": "myFile2",
+                                "type": "file",
+                                "size": 1
+                            }
+                        ],
+                        "size": 1
+                    }
+                ],
+                "size": 2
             }
         },
         {
             "storageName": "myStorage2",
             "channel": "2",
-            "struct": {
-                
-            }
+            "struct": {}
         }
     ]
 }

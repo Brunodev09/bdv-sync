@@ -1,24 +1,39 @@
 import _ from "../../tools/Terminal";
 import Channel from '../../models/Channel';
-import User from '../../models/User';
-
+import Dump from "../../interfaces/Dump";
 import Cache from "../Cache";
 import UUID from "uuid/v1";
 
+import { ListFiles, File, Folder } from "../../interfaces/Structs";
+
 export default class Sync {
-    static async updateUserChannels(userId: string) {
+    static async updateUserChannels(userId: string, dump: string) {
         let _id = UUID();
-        let user = await User.findById(userId);
-        if (!user) {
-            _.say(`No user found with the id ${userId} to synchronize!`, "red");
+        let channel = await Channel.find({"participants": userId});
+
+        if (!channel || !channel.length) {
+            _.say(`No channel found associated with the id ${userId} to synchronize!`, "red");
             return;
         }
-        Cache.add("sync", _id, user.email);
-        let structs = user.channelsFolderStructs;
+        Cache.add("sync", _id, userId);
+        let structs = channel.dump;
+        let channelId = channel.id;
+        let fileList = new ListFiles();
+
 
         for (let struct of structs) {
+            let structInDatabase = JSON.parse(struct);
+            let structNow = JSON.parse(dump);
 
+            Sync.extractFiles(structInDatabase, fileList)
+            Sync.extractFiles(structNow, fileList);
         }
     }
 
+    static extractFiles(dump: Dump, list: ListFiles) {
+        if (dump instanceof Folder) {
+            
+        }
+        return null;
+    }
 }
