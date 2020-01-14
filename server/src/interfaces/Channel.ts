@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default interface Channel {
+export default interface IChannel {
     id: number;
     participants: mongoose.Schema.Types.ObjectId[],
     totalSizeInMB: number;

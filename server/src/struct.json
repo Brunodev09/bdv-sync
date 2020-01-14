@@ -3,15 +3,15 @@
         {
             "storageName": "myStorage",
             "channel": "1",
-            "fileManager": {
+            "struct": {
                 
             }
         },
         {
             "storageName": "myStorage2",
             "channel": "2",
-            "fileManager": {
-
+            "struct": {
+                
             }
         }
     ]

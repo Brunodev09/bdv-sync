@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc && node ./dist/network/index.js"
+    "compile": "tsc && node ./dist/core/index.js"
   },
   "author": "brunodev09",
   "license": "MIT",
@@ -24,7 +24,8 @@
     "mongoose": "^5.8.7",
     "socket.io": "^2.3.0",
     "touch": "^3.1.0",
-    "typescript": "^3.4.1"
+    "typescript": "^3.4.1",
+    "uuid": "^3.3.3"
   },
   "bin": {
     "bdv-sync": "./dist/src/index.js"
