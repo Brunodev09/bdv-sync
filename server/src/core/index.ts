@@ -5,7 +5,7 @@ config({ path: resolve(__dirname, "../../.env") })
 import Authentication from "../controllers/Authentication";
 import StartServer from "./Server";
 
-// This import will server the purpose of creating the Singleton.
+// This import will serve the purpose of creating the Singleton.
 import Cache from "./Cache";
 
 Cache.populate("user", "email");

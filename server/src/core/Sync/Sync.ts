@@ -20,7 +20,6 @@ export default class Sync {
         let channelId = channel.id;
         let fileList = new ListFiles();
 
-
         for (let struct of structs) {
             let structInDatabase = JSON.parse(struct);
             let structNow = JSON.parse(dump);
@@ -32,7 +31,7 @@ export default class Sync {
 
     static extractFiles(dump: Dump, list: ListFiles) {
         if (dump instanceof Folder) {
-            
+
         }
         return null;
     }
