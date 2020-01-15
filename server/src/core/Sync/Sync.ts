@@ -32,7 +32,17 @@ export default class Sync {
     }
 
     static compareCheckSumsInFileLists(list1: ListFiles, list2: ListFiles) {
-        
+        let returnFiles = new ListFiles();
+        for (let key1 in list1.files) {
+            let size1 = list1.files[key1];
+            for (let key2 in list2.files) {
+                let size2 = list2.files[key2];
+                if (key1 !== key2) continue;
+                else if (size1 !== size2) {
+                    // returnFiles.add();
+                }
+            }
+        }
     }
 
     static extractFiles(dump: Dump | File | Folder, list: ListFiles) {

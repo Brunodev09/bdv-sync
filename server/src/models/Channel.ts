@@ -10,7 +10,7 @@ const Channel = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     }],
-    totalSizeInMB: {
+    sizeOfChannel: {
         type: Number,
         required: true
     },
