@@ -28,6 +28,7 @@ export default class Sync {
             Sync.extractFiles(structInDatabase, listDatabase);
             Sync.extractFiles(structNow, listNew);
         }
+        let filesToUpload = Sync.compareCheckSumsInFileLists(listDatabase, listNew);
     }
 
     static compareCheckSumsInFileLists(list1: ListFiles, list2: ListFiles) {
