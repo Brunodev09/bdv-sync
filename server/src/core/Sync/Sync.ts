@@ -18,20 +18,32 @@ export default class Sync {
         Cache.add("sync", _id, userId);
         let structs = channel.dump;
         let channelId = channel.id;
-        let fileList = new ListFiles();
+        let listDatabase = new ListFiles();
+        let listNew = new ListFiles();
 
         for (let struct of structs) {
             let structInDatabase = JSON.parse(struct);
             let structNow = JSON.parse(dump);
 
-            Sync.extractFiles(structInDatabase, fileList);
-            Sync.extractFiles(structNow, fileList);
+            Sync.extractFiles(structInDatabase, listDatabase);
+            Sync.extractFiles(structNow, listNew);
         }
     }
 
-    static extractFiles(dump: Dump, list: ListFiles) {
-        if (dump instanceof Folder) {
+    static compareCheckSumsInFileLists(list1: ListFiles, list2: ListFiles) {
+        
+    }
 
+    static extractFiles(dump: Dump | File | Folder, list: ListFiles) {
+        if (dump instanceof Folder && dump.content && dump.content.length) {
+            for (let data of dump.content) {
+                if (data instanceof File) {
+                    list.add(data);
+                }
+                else if (data instanceof Folder && data.content && data.content.length) {
+                    Sync.extractFiles(data, list);
+                }
+            }
         }
         return null;
     }
