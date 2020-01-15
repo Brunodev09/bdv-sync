@@ -24,7 +24,7 @@ export default class Sync {
             let structInDatabase = JSON.parse(struct);
             let structNow = JSON.parse(dump);
 
-            Sync.extractFiles(structInDatabase, fileList)
+            Sync.extractFiles(structInDatabase, fileList);
             Sync.extractFiles(structNow, fileList);
         }
     }
