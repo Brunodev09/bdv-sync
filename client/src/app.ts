@@ -1,5 +1,6 @@
 const socket = require('socket.io-client');
-const client = socket.connect('http://localhost:5000');
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjVlMWZhM2ZmYjE0NGEzNmY2NjFhOGU2ZSIsIm5hbWUiOiJCcnVub2RldjA5IiwiZW1haWwiOiJicnVuby5tYXlvbC5naWFubm90dGlAZ21haWwuY29tIiwicGFzc3dvcmQiOiJNMk01T1RBNVlXWmxZekkxTXpVMFpEVTFNV1JoWlRJeE5Ua3dZbUl5Tm1Vek9HUTFNMll5TVRjellqaGtNMlJqTTJWbFpUUmpNRFEzWlRkaFlqRmpNV1ZpT0dJNE5URXdNMlV6WW1VM1ltRTJNVE5pTXpGaVlqVmpPV016TmpJeE5HUmpPV1l4TkdFME1tWmtOMkV5Wm1SaU9EUTROVFppWTJFMVl6UTBZekk9IiwiY3JlYXRlZEF0IjoiMjAyMC0wMS0xNVQyMzo0NTowMy41MjVaIiwidXBkYXRlZEF0IjoiMjAyMC0wMS0xNVQyMzo0NTowMy41MjVaIiwiX192IjowfSwiaWF0IjoxNTc5MTMyNjE2LCJleHAiOjE1Nzk0OTI2MTZ9.CmKDUQiB1mIGe9ZGv7r7rlzXTxM4383rYMxMqfUE88U";
+const client = socket.connect(`http://localhost:3000?authToken=${authToken}`);
 
 client.on("connection", (packet) => console.log(packet));
 client.on("synchronize", (packet) => console.info(packet));

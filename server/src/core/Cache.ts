@@ -39,6 +39,7 @@ class CacheSnippet {
 
     async populate(where: string, key: string) {
         let users = await User.find();
+        if (!users) return;
         for (let user of users) {
             this.sort(where).set(key, user);
         }
