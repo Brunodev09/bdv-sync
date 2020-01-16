@@ -35,7 +35,7 @@ export default class UserController {
         try {
             user = await User.findOne({ email });
             hashedPassword = SHA512(password);
-            hashedPassword = Base64.stringify(UTF8.parse(password));
+            hashedPassword = Base64.stringify(UTF8.parse(hashedPassword));
 
             if (user.password === hashedPassword) {
                 _.say(`User with the email of ${email} has logged in!`);
@@ -46,9 +46,10 @@ export default class UserController {
                     return response.status(200).json({ token, user: user.name });
                 });
             }
-            _.say(`User with the email of ${email} has entered invalid credentials!`, "red");
-            return response.status(400).json({ error: "Invalid credentials!" });
-
+            else {
+                _.say(`User with the email of ${email} has entered invalid credentials!`, "red");
+                return response.status(400).json({ error: "Invalid credentials!" });
+            }
 
         } catch (e) {
             _.say(e.message || e, "red");
@@ -58,7 +59,12 @@ export default class UserController {
 
     create = async (request: express.Request, response: express.Response) => {
         const { name, email, password } = request.body;
+        const charLength: Readonly<number> = 8;
+
         if (!name || !email || !password) return response.status(400).json({ error: "Missing required parameters!" });
+
+        if (password.length < 8) return response.status(400).json({ error: `Password must be at least ${charLength} long` });
+
 
         try {
             this.user = await User.findOne({ email: email });

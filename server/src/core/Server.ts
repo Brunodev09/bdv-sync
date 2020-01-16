@@ -33,7 +33,7 @@ export default class StartServer {
     }
 
     public listen() {
-        this.io.listen(process.env.PORT || 5000);
+        this.server.listen(process.env.PORT || 5000);
         this.socketListeners = new WebSocket(this.io);
         this.socketListeners.listen();
     }
@@ -78,7 +78,7 @@ export default class StartServer {
         process.on("SIGINT", () => {
             mongoose.connection.close(function () {
                 _.say(
-                    "Mongoose default connection disconnected through app termination"
+                    "Mongoose default connection disconnected through server termination"
                 );
                 process.exit(0);
             });

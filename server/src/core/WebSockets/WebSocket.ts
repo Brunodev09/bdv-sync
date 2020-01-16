@@ -27,9 +27,10 @@ export default class WebSocket {
             let decoded;
 
             try {
-                decoded = jwt.verify(socket.authToken, process.env.JWT);
+                decoded = jwt.verify(socket.handshake.query.authToken, process.env.JWT);
             } catch (e) {
                 _.say(`User attempted to connect to WebSocket without a valid token hash.`);
+                socket.disconnect();
                 return;
             }
 
